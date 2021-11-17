@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.miappta.Utils
+import com.example.miappta.resources.Utils.Companion.tiradas
 import com.example.miappta.databinding.FragmentTiradasBinding
+import com.example.miappta.resources.Sounds.Companion.onRollDice
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,8 +26,6 @@ class TiradasFragment : Fragment() {
     private lateinit var pageViewModel: PageViewModel
 
     private var _binding: FragmentTiradasBinding? = null
-    private var utils: Utils = Utils()
-
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,11 +55,13 @@ class TiradasFragment : Fragment() {
 
         val fab: FloatingActionButton = binding.fab
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Numero", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fab.setOnClickListener {
+//                view ->
+//            Snackbar.make(view, "Numero", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
 
-            utils.tiradas(requireActivity().supportFragmentManager)
+            onRollDice( requireContext() )
+            tiradas(requireActivity().supportFragmentManager)
         }
 //        return inflater.inflate(R.layout.fragment_tiradas, container, false)
         return root

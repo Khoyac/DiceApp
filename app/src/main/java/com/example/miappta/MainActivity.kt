@@ -30,9 +30,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun cargarFragment(fragment: Fragment) {
-        val fragmentIntercambio = supportFragmentManager.beginTransaction()
-        fragmentIntercambio.add(R.id.fragmentResultados, fragment)
-        fragmentIntercambio.commit()
-    }
 }
