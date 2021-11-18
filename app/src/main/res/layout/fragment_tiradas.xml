@@ -17,6 +17,16 @@
         app:srcCompat="@drawable/dice_icon"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/anyadir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <LinearLayout
         android:id="@+id/llTiradas"
         android:layout_width="match_parent"
@@ -24,4 +34,12 @@
         android:orientation="vertical">
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/popUpFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+    </FrameLayout>
 </FrameLayout>

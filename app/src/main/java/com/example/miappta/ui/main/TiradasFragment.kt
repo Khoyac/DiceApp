@@ -1,15 +1,19 @@
 package com.example.miappta.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.miappta.ConfDados
+import com.example.miappta.MainActivity
+import com.example.miappta.PopUp
 import com.example.miappta.resources.Utils.Companion.tiradas
 import com.example.miappta.databinding.FragmentTiradasBinding
+import com.example.miappta.resources.Dados
 import com.example.miappta.resources.Sounds.Companion.onRollDice
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,14 +30,12 @@ class TiradasFragment : Fragment() {
     private lateinit var pageViewModel: PageViewModel
 
     private var _binding: FragmentTiradasBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var tirada: MutableList<Dados> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -53,7 +55,23 @@ class TiradasFragment : Fragment() {
         _binding = FragmentTiradasBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        tirada.add(Dados(3, 3))
+        tirada.add(Dados(4, 2))
+        tirada.add(Dados(10, 2))
+
+
         val fab: FloatingActionButton = binding.fab
+        val mas: FloatingActionButton = binding.anyadir
+
+        mas.setOnClickListener {
+//            val intent = Intent(requireContext(), PopUp::class.java)
+//            intent.putExtra("popuptitle", "Error")
+//            intent.putExtra("popuptext", "Sorry, that email address is already used!")
+//            intent.putExtra("popupbtn", "OK")
+//            intent.putExtra("darkstatusbar", false)
+//            startActivity(intent)
+            (activity as MainActivity?)!!.abrirPopUp(ConfDados(), binding.popUpFrame.id)
+        }
 
         fab.setOnClickListener {
 //                view ->
@@ -61,11 +79,13 @@ class TiradasFragment : Fragment() {
 //                .setAction("Action", null).show()
 
             onRollDice( requireContext() )
-            tiradas(requireActivity().supportFragmentManager)
+            tiradas(requireActivity().supportFragmentManager, tirada)
         }
+
 //        return inflater.inflate(R.layout.fragment_tiradas, container, false)
         return root
     }
+
 
     companion object {
         /**

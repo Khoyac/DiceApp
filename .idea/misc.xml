@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/drawable/dado_layout.xml" value="0.19739583333333333" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/drawable/round_outline.xml" value="0.2703125" />
         <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/activity_pop_up.xml" value="0.24010416666666667" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/fragment_conf_dados.xml" value="0.25416666666666665" />
         <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/fragment_main.xml" value="0.25416666666666665" />
         <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/fragment_resultados.xml" value="0.25416666666666665" />
         <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/fragment_tiradas.xml" value="0.25416666666666665" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/layout/my_toolbar.xml" value="0.2552083333333333" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/menu/menu.xml" value="0.2552083333333333" />
+        <entry key="..\:/DAM/MiAppTa/app/src/main/res/menu/menuopciones.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -20,8 +20,9 @@ class Utils : AppCompatActivity() {
             fragmentIntercambio.commit()
         }
 
-        fun tiradas(context: FragmentManager) {
-            fragment = ResultadosFragment.newInstance( roller(10).toString(), "test2")
+        fun tiradas(context: FragmentManager, tirada: MutableList<Dados>) {
+           // fragment = ResultadosFragment.newInstance( roller(10).toString(), "test2")
+            fragment = ResultadosFragment.newInstance(tirada, "2")
             cargarFragment(fragment, context)
         }
 
@@ -29,6 +30,11 @@ class Utils : AppCompatActivity() {
             return Random.nextInt(0, number)
         }
 
+//        fun abrirPopUp(fragment: Fragment, id: Int) {
+//            val fragmentIntercambio = supportFragmentManager.beginTransaction()
+//            fragmentIntercambio.replace(id, fragment)
+//            fragmentIntercambio.commit()
+//        }
     }
 
 
