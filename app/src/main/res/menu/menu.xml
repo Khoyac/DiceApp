@@ -10,6 +10,10 @@
         android:title="Caracola"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/esp"
+        android:title="Esp"
+        app:showAsAction="never"/>
+
     <item android:id="@+id/captura"
         android:icon="@drawable/screenshot"
         android:title="Cap"

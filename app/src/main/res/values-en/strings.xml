@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mi aplicación bonita</string>
+    <string name="tab_text_1">Roll dice</string>
+    <string name="tab_text_2">History</string>
+    <string name="masDados">Add Dice</string>
+    <string name="capGuardada">Screenshot Saved</string>
+    <string name="dados">Dices</string>
+    <string name="cerrar">Close</string>
+</resources>

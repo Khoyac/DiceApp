@@ -25,9 +25,11 @@ class Utils : AppCompatActivity() {
            // fragment = ResultadosFragment.newInstance( roller(10).toString(), "test2")
 
             //Linea Test
-            crearDados()
-            ListaDados.add(Dados(20))
+            //crearDados()
+            //ListaDados.add(Dados(20))
 
+
+            ListaDados.sortBy { it.caras }
             tirarDados()
 
             fragment = ResultadosFragment.newInstance()

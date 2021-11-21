@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         tabs.setupWithViewPager(viewPager)
 
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -68,10 +70,17 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.hola -> {
+                cambiarIdioma(Locale("en", "EN"))
                 Toast.makeText(applicationContext, "click on hola", Toast.LENGTH_LONG).show()
                 true
             }
             R.id.caracola ->{
+                cambiarIdioma(Locale("pi", "PI"))
+                Toast.makeText(applicationContext, "click on caracola", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.esp ->{
+                cambiarIdioma(Locale("es", "ES"))
                 Toast.makeText(applicationContext, "click on caracola", Toast.LENGTH_LONG).show()
                 return true
             }
@@ -94,6 +103,16 @@ class MainActivity : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun cambiarIdioma(localizacion: Locale) {
+        Locale.setDefault(localizacion)
+        val config = Configuration()
+        config.setLocale(localizacion)
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        val refresh = Intent(this@MainActivity, MainActivity::class.java)
+        startActivity(refresh)
+        finish()
     }
 
     private fun screenShot(view: View): Bitmap {

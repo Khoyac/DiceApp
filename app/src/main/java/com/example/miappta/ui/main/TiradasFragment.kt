@@ -1,17 +1,17 @@
 package com.example.miappta.ui.main
 
-import android.content.Intent
-import android.graphics.Color
+import android.content.Context
+import android.hardware.Sensor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import com.example.miappta.ConfDados
 import com.example.miappta.MainActivity
-import com.example.miappta.PopUp
 import com.example.miappta.R
+import com.example.miappta.components.dadoSelected
 import com.example.miappta.resources.Utils.Companion.tiradas
 import com.example.miappta.databinding.FragmentTiradasBinding
 import com.example.miappta.resources.Dados
@@ -21,6 +21,8 @@ import com.google.android.material.chip.Chip
 
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.transition.MaterialContainerTransform
+import android.hardware.SensorEvent
+import com.example.miappta.MainActivity.Companion.ListaDados
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -60,6 +62,8 @@ class TiradasFragment : Fragment() {
         val fab: FloatingActionButton = binding.fab
         val mas: FloatingActionButton = binding.anyadir
 
+        (context?.getString(R.string.dados) + " " + ListaDados.size.toString()).also { binding.chipCDados.text = it }
+
         mas.setOnClickListener {
 //            val intent = Intent(requireContext(), PopUp::class.java)
 //            intent.putExtra("popuptitle", "Error")
@@ -81,12 +85,13 @@ class TiradasFragment : Fragment() {
 
         val chipGroup = binding.chipDices
 
-        val genres = arrayOf("Thriller", "Comedy", "Adventure")
+        val genres = arrayOf("20", "10", "6")
         for (genre in genres) {
             val chip = Chip(requireContext())
-            chip.text = genre
+            "D$genre".also { chip.text = it }
             chip.setOnClickListener {
-                Toast.makeText(requireContext(), chip.text, Toast.LENGTH_SHORT).show()
+                val fragment = dadoSelected.newInstance( genre.toInt(), "a")
+                expandedChip(fragment, requireActivity().supportFragmentManager)
             }
             chipGroup.addView(chip)
         }
@@ -94,6 +99,14 @@ class TiradasFragment : Fragment() {
 //        return inflater.inflate(R.layout.fragment_tiradas, container, false)
         return root
     }
+
+    private fun expandedChip(fragment: Fragment, fmanager: FragmentManager) {
+        val fragmentIntercambio = fmanager.beginTransaction()
+        fragmentIntercambio.replace(R.id.chipFragment, fragment)
+        fragmentIntercambio.addToBackStack(null)
+        fragmentIntercambio.commit()
+    }
+
 
 
 

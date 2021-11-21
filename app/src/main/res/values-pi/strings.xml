@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mi aplicación bonita</string>
+    <string name="tab_text_1">Arrr!</string>
+    <string name="tab_text_2">Historiaar</string>
+    <string name="masDados">Moaaar Dados</string>
+    <string name="capGuardada">Retrato Guaaardado</string>
+    <string name="dados">Dados:</string>
+    <string name="cerrar">Cerraaar</string>
+</resources>
