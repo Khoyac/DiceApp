@@ -6,8 +6,13 @@
         android:title="Hola"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/carapolla"
-        android:title="Carapolla"
+    <item android:id="@+id/caracola"
+        android:title="Caracola"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/captura"
+        android:icon="@drawable/screenshot"
+        android:title="Cap"
+        app:showAsAction="ifRoom"/>
 
 </menu>

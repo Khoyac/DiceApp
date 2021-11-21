@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flConfDados"
     android:layout_width="350dp"
     android:layout_height="500dp"
     android:layout_gravity="center"
     tools:context=".ConfDados">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/glMenuConfDados"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F4E7E7"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="450dp">
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <Button
+        android:id="@+id/btNuevosDados"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#434141"
+        android:text="@string/masDados"
+        android:textColor="#F3EDEB" />
 
 </FrameLayout>

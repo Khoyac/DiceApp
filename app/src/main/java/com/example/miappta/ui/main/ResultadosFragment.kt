@@ -21,11 +21,7 @@ import com.example.miappta.resources.Dados
 import android.graphics.drawable.GradientDrawable
 
 import androidx.core.content.ContextCompat
-
-
-
-
-
+import com.example.miappta.MainActivity.Companion.ListaDados
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -67,7 +63,7 @@ class ResultadosFragment : Fragment() {
 
 
         gridLayout = binding.glDados
-        for (dado in lista) {
+        for (dado in ListaDados) {
 
             // Adding imageView Dado
            // val ivDado = ImageView(activity)
@@ -92,8 +88,12 @@ class ResultadosFragment : Fragment() {
             // Adding team 1 TextView
             val txtView1 = TextView(activity)
             txtView1.text = dado.resultado.toString()
+            txtView1.setTextColor(Color.WHITE)
             txtView1.typeface = ResourcesCompat.getFont(this.requireContext(), com.example.miappta.R.font.bubblegum)
-            txtView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50.toFloat())
+
+            val fontTamano = (45 / dado.resultado.toString().length) + dado.resultado.toString().length
+
+            txtView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontTamano.toFloat())
             //txtView1.setBackgroundResource(R.drawable.basedado_xikito)
 
             txtView1.gravity = CENTER
@@ -119,13 +119,14 @@ class ResultadosFragment : Fragment() {
         lateinit var lista: MutableList<Dados>
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: MutableList<Dados>, param2: String) =
+        fun newInstance() =
             ResultadosFragment().apply {
                 arguments = Bundle().apply {
-                    lista = param1
+                    //lista = param1
 //                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    //putString(ARG_PARAM2, param2)
                 }
             }
+
     }
 }

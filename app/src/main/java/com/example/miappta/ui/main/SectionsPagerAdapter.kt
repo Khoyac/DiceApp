@@ -22,7 +22,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
         when (position) {
             0 -> {
-                return TiradasFragment.newInstance( "1", "2")
+                return TiradasFragment.newInstance()
             }
 //            1 -> {
 //                return ConfigurarDadosFragment.newInstance("Testo", "Testo")

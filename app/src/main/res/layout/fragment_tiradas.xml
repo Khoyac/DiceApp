@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.TiradasFragment">
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipDices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dados" />
+    </com.google.android.material.chip.ChipGroup>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="match_parent"
@@ -14,6 +27,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         app:srcCompat="@drawable/dice_icon"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -24,7 +38,8 @@
         android:layout_gravity="bottom|start"
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/add"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
