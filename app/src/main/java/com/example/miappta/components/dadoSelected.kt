@@ -27,6 +27,7 @@ class dadoSelected : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: Int = 0
     private var param2: String? = null
+    private lateinit var chipContador: Chip
 
     private var _binding: FragmentDadoSelectedBinding? = null
     private val binding get() = _binding!!
@@ -45,21 +46,40 @@ class dadoSelected : Fragment() {
     ): View? {
         _binding = FragmentDadoSelectedBinding.inflate(inflater, container, false)
         val root = binding.root
-        val chipContador: Chip = requireActivity().findViewById(R.id.chipCDados)
+        chipContador = requireActivity().findViewById(R.id.chipCDados)
+        actualizarContadores()
 
         binding.btnCerrar.setOnClickListener {
             onBackPressed()
         }
 
         binding.btnMas.setOnClickListener {
+            // Creamos un nuevo dado y lo añadimos a la lista
             ListaDados.add(Dados(param1))
-            (context?.getString(R.string.dados) + " " + ListaDados.size.toString()).also { chipContador.text = it }
+            actualizarContadores()
+        }
+
+        binding.btnMenos.setOnClickListener {
+            //Creamos un dado como el que queremos eliminar y eliminamos una copia de la lista
+            val dado = Dados(param1)
+            ListaDados.remove(dado)
+            actualizarContadores()
         }
 
 
 
 
         return root
+    }
+
+    fun actualizarContadores() {
+        // Cambiamos el contador general de la cantidad de dados totales que hay
+        (context?.getString(R.string.dados) + " " + ListaDados.size.toString()).also { chipContador.text = it }
+
+        // Contamos la cantidad de dados que hay con esa cantidad de caras
+        // Y lo mostramos por pantalla en el contador
+        val cant = ListaDados.count{ it.caras == param1 }
+        binding.tvCantidadDados.text = cant.toString()
     }
 
     fun onBackPressed() {

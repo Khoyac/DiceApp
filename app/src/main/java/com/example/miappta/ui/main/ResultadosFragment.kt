@@ -19,6 +19,7 @@ import com.example.miappta.R
 import com.example.miappta.databinding.FragmentResultadosBinding
 import com.example.miappta.resources.Dados
 import android.graphics.drawable.GradientDrawable
+import android.widget.Toast
 
 import androidx.core.content.ContextCompat
 import com.example.miappta.MainActivity.Companion.ListaDados
@@ -100,6 +101,9 @@ class ResultadosFragment : Fragment() {
 
             fLayout?.addView(ivDice)
             fLayout?.addView(txtView1)
+            fLayout?.setOnClickListener {
+                Toast.makeText(requireContext(), R.string.tocar, Toast.LENGTH_LONG).show()
+            }
             gridLayout.addView(fLayout)
             //Log.i("Control:", "---------" + dado.caras.toString())
         }

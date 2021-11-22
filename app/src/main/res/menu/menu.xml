@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/hola"
-        android:title="Hola"
-        app:showAsAction="never"/>
-
-    <item android:id="@+id/caracola"
-        android:title="Caracola"
+        android:title="En"
+        android:icon="@drawable/ic_uk"
         app:showAsAction="never"/>
 
     <item android:id="@+id/esp"
         android:title="Esp"
+        android:icon="@drawable/es"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/caracola"
+        android:icon="@drawable/pi"
+        android:title="Pirata"
         app:showAsAction="never"/>
 
     <item android:id="@+id/captura"

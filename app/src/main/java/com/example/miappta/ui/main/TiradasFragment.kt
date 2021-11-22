@@ -22,6 +22,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.transition.MaterialContainerTransform
 import android.hardware.SensorEvent
+import androidx.core.view.marginStart
 import com.example.miappta.MainActivity.Companion.ListaDados
 
 
@@ -88,6 +89,8 @@ class TiradasFragment : Fragment() {
         val genres = arrayOf("20", "10", "6")
         for (genre in genres) {
             val chip = Chip(requireContext())
+            chip.setChipIconResource(R.drawable.basedado_xikito)
+            chip.iconStartPadding = 10F
             "D$genre".also { chip.text = it }
             chip.setOnClickListener {
                 val fragment = dadoSelected.newInstance( genre.toInt(), "a")
