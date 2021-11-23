@@ -24,12 +24,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
             0 -> {
                 return TiradasFragment.newInstance()
             }
-//            1 -> {
-//                return ConfigurarDadosFragment.newInstance("Testo", "Testo")
-//            }
-//            2 -> {
-//                return HistorialFragment.newInstance(1)
-//            }
+            1 -> {
+                return HistorialFragment.newInstance()
+            }
         }
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).

@@ -1,7 +1,5 @@
 package com.example.miappta.ui.main
 
-import android.content.Context
-import android.hardware.Sensor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,20 +8,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.example.miappta.ConfDados
 import com.example.miappta.MainActivity
-import com.example.miappta.R
 import com.example.miappta.components.dadoSelected
 import com.example.miappta.resources.Utils.Companion.tiradas
 import com.example.miappta.databinding.FragmentTiradasBinding
-import com.example.miappta.resources.Dados
 import com.example.miappta.resources.Sounds.Companion.onRollDice
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.chip.Chip
 
-import com.google.android.material.chip.ChipGroup
-import com.google.android.material.transition.MaterialContainerTransform
-import android.hardware.SensorEvent
-import androidx.core.view.marginStart
+import androidx.recyclerview.widget.RecyclerView
+import com.example.miappta.MainActivity.Companion.HistorialDeTiradas
 import com.example.miappta.MainActivity.Companion.ListaDados
+import com.example.miappta.adapter.ItemAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.miappta.R
+import com.example.miappta.resources.Dados
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -63,17 +61,17 @@ class TiradasFragment : Fragment() {
         val fab: FloatingActionButton = binding.fab
         val mas: FloatingActionButton = binding.anyadir
 
-        (context?.getString(R.string.dados) + " " + ListaDados.size.toString()).also { binding.chipCDados.text = it }
+        (context?.getString(com.example.miappta.R.string.dados) + " " + ListaDados.size.toString()).also { binding.chipCDados.text = it }
 
-        mas.setOnClickListener {
-//            val intent = Intent(requireContext(), PopUp::class.java)
-//            intent.putExtra("popuptitle", "Error")
-//            intent.putExtra("popuptext", "Sorry, that email address is already used!")
-//            intent.putExtra("popupbtn", "OK")
-//            intent.putExtra("darkstatusbar", false)
-//            startActivity(intent)
-            (activity as MainActivity?)!!.abrirPopUp(ConfDados(), binding.popUpFrame.id)
-        }
+//        mas.setOnClickListener {
+////            val intent = Intent(requireContext(), PopUp::class.java)
+////            intent.putExtra("popuptitle", "Error")
+////            intent.putExtra("popuptext", "Sorry, that email address is already used!")
+////            intent.putExtra("popupbtn", "OK")
+////            intent.putExtra("darkstatusbar", false)
+////            startActivity(intent)
+//            (activity as MainActivity?)!!.abrirPopUp(ConfDados(), binding.popUpFrame.id)
+//        }
 
         fab.setOnClickListener {
 //                view ->
@@ -82,24 +80,46 @@ class TiradasFragment : Fragment() {
 
             onRollDice( requireContext() )
             tiradas(requireActivity().supportFragmentManager)
+
+            val ListaTemporal = ListaDados.toList()
+            HistorialDeTiradas.add(ListaTemporal)
+
+
+            val recyclerView = activity?.findViewById<RecyclerView>(R.id.rvHistorial)
+            val manager = LinearLayoutManager(requireContext())
+            recyclerView?.layoutManager = manager
+            recyclerView?.setHasFixedSize(true)
+            val adapter = ItemAdapter(requireContext(), HistorialDeTiradas)
+            recyclerView?.adapter = adapter
         }
+
+        val colores = mapOf<Int, String>(
+            20 to "red",
+            10 to "pink",
+            6 to "green"
+        )
+        val coloresBase = mapOf<Int, Int>(
+            20 to com.example.miappta.R.drawable.basechikita_red,
+            10 to com.example.miappta.R.drawable.basechikita_pink,
+            6 to com.example.miappta.R.drawable.basechikita_green
+        )
 
         val chipGroup = binding.chipDices
 
         val genres = arrayOf("20", "10", "6")
         for (genre in genres) {
             val chip = Chip(requireContext())
-            chip.setChipIconResource(R.drawable.basedado_xikito)
+            chip.setChipIconResource(coloresBase.getValue(genre.toInt()))
             chip.iconStartPadding = 10F
             "D$genre".also { chip.text = it }
+            chip.id = genre.toInt()
             chip.setOnClickListener {
-                val fragment = dadoSelected.newInstance( genre.toInt(), "a")
+                val fragment = dadoSelected.newInstance( genre.toInt(), colores.getValue(genre.toInt()))
                 expandedChip(fragment, requireActivity().supportFragmentManager)
             }
             chipGroup.addView(chip)
         }
 
-//        return inflater.inflate(R.layout.fragment_tiradas, container, false)
         return root
     }
 
@@ -109,10 +129,6 @@ class TiradasFragment : Fragment() {
         fragmentIntercambio.addToBackStack(null)
         fragmentIntercambio.commit()
     }
-
-
-
-
 
     companion object {
         /**

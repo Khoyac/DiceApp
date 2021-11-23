@@ -8,4 +8,5 @@
     <string name="dados">Dices</string>
     <string name="cerrar">Close</string>
     <string name="tocar">Do not touch, why do you touch?</string>
+    <string name="idioma">Language changed</string>
 </resources>

@@ -8,4 +8,8 @@
     <string name="dados">Dados:</string>
     <string name="cerrar">Cerrar</string>
     <string name="tocar">No toques, ¿Por que tocas?</string>
+    <string name="idioma">Idioma cambiado</string>
+    <string name="d20" translatable="false">D20</string>
+    <string name="d10" translatable="false">D10</string>
+    <string name="d6" translatable="false">D6</string>
 </resources>

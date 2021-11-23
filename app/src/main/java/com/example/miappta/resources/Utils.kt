@@ -22,13 +22,8 @@ class Utils : AppCompatActivity() {
         }
 
         fun tiradas(context: FragmentManager) {
-           // fragment = ResultadosFragment.newInstance( roller(10).toString(), "test2")
 
-            //Linea Test
-            //crearDados()
-            //ListaDados.add(Dados(20))
-
-
+            // Ordeno la lista de dados para mostrarlos ordenados
             ListaDados.sortBy { it.caras }
             tirarDados()
 
@@ -49,7 +44,7 @@ class Utils : AppCompatActivity() {
         fun crearDados() {
             ListaDados.clear()
             for (i in 1..roller(20)) {
-                ListaDados.add(Dados(6))
+                ListaDados.add(Dados(6, "basechikita_red"))
             }
 
         }

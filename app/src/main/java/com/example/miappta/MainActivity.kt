@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var ListaDados: MutableList<Dados> = mutableListOf()
+        var HistorialDeTiradas: MutableList<List<Dados>> = mutableListOf()
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
+
         return true
     }
 
@@ -71,17 +73,17 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.hola -> {
                 cambiarIdioma(Locale("en", "EN"))
-                Toast.makeText(applicationContext, "click on hola", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, R.string.idioma, Toast.LENGTH_LONG).show()
                 true
             }
             R.id.caracola ->{
                 cambiarIdioma(Locale("pi", "PI"))
-                Toast.makeText(applicationContext, "click on caracola", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, R.string.idioma, Toast.LENGTH_LONG).show()
                 return true
             }
             R.id.esp ->{
                 cambiarIdioma(Locale("es", "ES"))
-                Toast.makeText(applicationContext, "click on caracola", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, R.string.idioma, Toast.LENGTH_LONG).show()
                 return true
             }
             R.id.captura ->{
@@ -90,6 +92,8 @@ class MainActivity : AppCompatActivity() {
                 val file: File = saveBitmap(bm, "$timeStamp.png")
                 Log.i("chase", "filepath: " + file.absolutePath)
                 val uri: Uri = Uri.fromFile(File(file.absolutePath))
+
+                // Codigo para darle la funcion de compartir al mismo boton
 //                val shareIntent = Intent()
 //                shareIntent.action = Intent.ACTION_SEND
 //                shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out my app.")
@@ -139,6 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkNeedPermissions() {
+        // Solicitar permisos de almacenamiento para la capturas
         // Por encima de 6.0 debe solicitar el permiso de forma dinámica
         if ((ContextCompat.checkSelfPermission(
                 this,
