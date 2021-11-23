@@ -20,6 +20,7 @@ import android.content.res.Configuration
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
@@ -32,6 +33,12 @@ import java.io.FileOutputStream
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
+import android.text.style.ForegroundColorSpan
+
+import android.text.SpannableString
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -65,6 +72,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
+
+        val positionOfMenuItem = 0
+        val item = menu.getItem(positionOfMenuItem)
+        val s = SpannableString("En")
+        s.setSpan(ForegroundColorSpan(Color.WHITE), 0, s.length, 0)
+        item.title = s
+
+        val positionOfMenuItem1 = 1
+        val item1 = menu.getItem(positionOfMenuItem1)
+        val s1 = SpannableString("Es")
+        s1.setSpan(ForegroundColorSpan(Color.WHITE), 0, s1.length, 0)
+        item1.title = s1
+
+        val positionOfMenuItem2 = 2
+        val item2 = menu.getItem(positionOfMenuItem2)
+        val s2 = SpannableString("Pirata")
+        s2.setSpan(ForegroundColorSpan(Color.WHITE), 0, s2.length, 0)
+        item2.title = s2
 
         return true
     }
